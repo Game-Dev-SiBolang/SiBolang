@@ -2,9 +2,13 @@
 
 import dynamic from 'next/dynamic';
 
-// ssr:false hanya boleh dipanggil dari Client Component (aturan Next.js versi ini)
 const GameClient = dynamic(() => import('@/components/game-client'), { ssr: false });
 
-export default function GameLoader() {
-  return <GameClient />;
+interface GameLoaderProps {
+  roomCode: string;
+  playerName: string;
+}
+
+export default function GameLoader({ roomCode, playerName }: GameLoaderProps) {
+  return <GameClient roomCode={roomCode} playerName={playerName} />;
 }

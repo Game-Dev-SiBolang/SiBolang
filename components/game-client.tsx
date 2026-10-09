@@ -4,7 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { createEngine } from '@/game/engine';
 import { PLAYER_MAX_HP } from '@/game/entities';
 
-export default function GameClient() {
+interface GameClientProps {
+  roomCode: string;
+  playerName: string;
+}
+
+export default function GameClient({ roomCode, playerName }: GameClientProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [hud, setHud] = useState<{
     hp: number;
@@ -30,7 +35,10 @@ export default function GameClient() {
   }, []);
 
   return (
-    <div className="game-wrap">
+    <div className="game-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ fontFamily: 'monospace', marginBottom: 8, fontSize: 14, color: '#f2d94e' }}>
+        ROOM: <strong>{roomCode}</strong> | Pemain: <strong>{playerName}</strong>
+      </div>
       <canvas
         ref={canvasRef}
         width={960}

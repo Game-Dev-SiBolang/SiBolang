@@ -1,4 +1,4 @@
-import GameLoader from '@/components/game-loader';
+import GameRoom from '@/components/game-room';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -13,7 +13,7 @@ export default function GamePage() {
       <p style={{ margin: 0, fontFamily: 'monospace', fontSize: 14 }}>
         Bolang mencari bukti ketidakadilan. Kumpulkan 3 bukti, buka pintu exit.
       </p>
-      <GameLoader />
+      <GameRoom />
       <Link href="/" style={{ fontFamily: 'monospace', fontSize: 14 }}>
         ← Kembali ke beranda
       </Link>
